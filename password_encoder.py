@@ -4,8 +4,20 @@ def encode(password):
     password = int(password) #by the way i am completely aware that this is probably the absolute stupidest way to do this but it works perfectly
     return password
 
+# decode() by Kaden Jones
 def decode(password):
-    return password
+    result = ""
+    string_password = str(password)
+    for char in string_password: # all of the encrypted characters are related by arithmetic operations so we can undo them based off of what number they are
+        if int(char) > 3:
+            result = str(result) + str((int(char) - 3))
+        elif int(char) < 3:
+            result = str(result) + str(int(char) + 7)
+        else:
+            result = str(result) + "0"
+
+
+    return result
 
 if __name__ == "__main__":
     while True:
